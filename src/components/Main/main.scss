@@ -1,0 +1,13 @@
+@import '../../styles/global.scss';
+
+.main {
+  padding-top: 6rem;
+  
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 6rem;
+  }
+}

@@ -1,3 +1,5 @@
+import './main.scss';
+
 type Props = { children?: any };
 
 const Main = ({ children }: Props) => {
