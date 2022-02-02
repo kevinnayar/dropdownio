@@ -1,27 +1,24 @@
 import { useState } from 'react';
+import { DropdownOpts } from '../../utils/baseUtils';
 import './dropdown.scss';
-
-type DropdownOpts = {
-  value: string;
-  label: string;
-};
 
 type Props = {
   label: string;
   opts: DropdownOpts[];
-  onChange: (opt: DropdownOpts) => void;
+  onChange: (value: null | number) => void;
 };
 
 const Dropdown = ({ label, opts, onChange }: Props) => {
   const id = label.toLowerCase().replace(' ', '-');
 
-  const [value, setValue] = useState(opts[0].value);
+  const [value, setValue] = useState('');
 
   const handleOnChange = (e: any) => {
     const value = e.target.value;
-    const opt = opts.find((o) => o.value === value);
-    if (opt) onChange(opt);
     setValue(value);
+
+    const valueToSet = value ? parseFloat(value) : null;
+    onChange(valueToSet);
   };
 
   return (
@@ -31,6 +28,7 @@ const Dropdown = ({ label, opts, onChange }: Props) => {
       </label>
 
       <select className="dropdown__select" name={id} id={id} value={value} onChange={handleOnChange}>
+        <option className="dropdown__option" value=""></option>
         {opts.map(({ value, label }) => (
           <option className="dropdown__option" key={value} value={value}>
             {label}

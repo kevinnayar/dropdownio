@@ -11,14 +11,7 @@ type ButtonProps = {
 const Button = ({ children, loading, disabled, onClick }: ButtonProps) => {
   return (
     <button type="submit" disabled={disabled || false} className="button" onClick={onClick}>
-      {loading ? (
-        <>
-          <i className="material-icons">loading</i>
-          {children}
-        </>
-      ) : (
-        children
-      )}
+      {loading ? 'Loading...' : children}
     </button>
   );
 };
