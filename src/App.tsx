@@ -13,6 +13,7 @@ const App = () => {
             { value: '1', label: 'One' },
             { value: '2', label: 'Two' },
           ]}
+          onChange={(v) => console.log(v)}
         />
       </Main>
     </div>

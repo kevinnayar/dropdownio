@@ -1,34 +1,38 @@
 import { useState } from 'react';
+import './dropdown.scss';
 
 type DropdownOpts = {
   value: string;
   label: string;
 };
 
-type Props = { label: string; opts: DropdownOpts[] };
+type Props = {
+  label: string;
+  opts: DropdownOpts[];
+  onChange: (opt: DropdownOpts) => void;
+};
 
-const Dropdown = ({ label, opts }: Props) => {
+const Dropdown = ({ label, opts, onChange }: Props) => {
   const id = label.toLowerCase().replace(' ', '-');
 
-  const [expanded, setExpanded] = useState(false);
-  const toggleExpanded = () => setExpanded(!expanded);
+  const [value, setValue] = useState(opts[0].value);
 
-  const onChange = (e: any) => {
-    console.log(e.target.value);
+  const handleOnChange = (e: any) => {
+    const value = e.target.value;
+    const opt = opts.find((o) => o.value === value);
+    if (opt) onChange(opt);
+    setValue(value);
   };
 
   return (
-    <div className={`dropdown ${expanded ? 'expanded' : 'collapsed'}`}>
+    <div className="dropdown">
       <label className="dropdown__label" htmlFor={id}>
-        <i onClick={toggleExpanded} className="material-icons">
-          {expanded ? 'expand_less' : 'expand_more'}
-        </i>
-        <span>{label}</span>
+        {label}
       </label>
 
-      <select name={id} id={id} onChange={onChange}>
+      <select className="dropdown__select" name={id} id={id} value={value} onChange={handleOnChange}>
         {opts.map(({ value, label }) => (
-          <option key={value} value={value}>
+          <option className="dropdown__option" key={value} value={value}>
             {label}
           </option>
         ))}
