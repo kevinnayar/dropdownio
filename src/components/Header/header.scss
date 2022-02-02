@@ -1,0 +1,25 @@
+@import '../../styles/global.scss';
+
+.header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background: $color-blue-dark;
+
+  &__title {
+    color: $color-blue-light;
+    font-size: 3.6em;
+    font-weight: 600;
+    margin: 0 auto;
+    text-align: center;
+
+    @media (max-width: $breakpoint-tablet) {
+      font-size: 2em;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.6em;
+      margin: 0 20px;
+    }
+  }
+}

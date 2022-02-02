@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Material+Icons&display=swap');
+
+$color-blue-light: #18c3e5;
+$color-blue-dark: #0f2531;
+$color-white: #fff;
+
+$breakpoint-desktop: 1180px;
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 640px;
+
+$base-transition: all 0.125s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+body {
+  background: $color-white;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
